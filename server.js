@@ -19,10 +19,11 @@ app.use('/api/auth', authRoutes);
 
 
 // DB Connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('MongoDB conectado com sucesso!');
     app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
   })
   .catch(err => console.error('Erro ao conectar no MongoDB:', err));
+
 //teste
