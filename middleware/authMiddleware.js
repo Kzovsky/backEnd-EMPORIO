@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET || "#4Sx7918Brse2f0De$0100!LixO@9B*%&";
-
+app.use(express.json());
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
 
@@ -13,7 +13,7 @@ function authMiddleware(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded; // acessível nas rotas
+    req.user = decoded;
     next();
   } catch (err) {
     return res.status(403).json({ error: "Token inválido ou expirado" });

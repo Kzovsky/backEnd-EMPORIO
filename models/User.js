@@ -5,8 +5,13 @@ const UserSchema = new mongoose.Schema({
   nome: { type: String, required: true },
   telefone: { type: String, required: true, unique: true },
   senha: { type: String, required: true },
-  admin: { type: Boolean, default: false } 
+  admin: { type: Boolean, default: false },
+  cart: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Cart'
+  }
 });
+
 
 // Hash da senha antes de salvar
 UserSchema.pre('save', async function (next) {
